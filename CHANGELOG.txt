@@ -38,3 +38,6 @@ This just started failing sometime between Oct 18 and Oct 22 2020...
 
 
 WHAT THE FUCK?!?!?! IT ACTUALLY VERIFIED @ fc3ea408?!?!
+
+Are rebases the only thing that got broken? Nope. Those work.
+
