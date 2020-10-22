@@ -30,3 +30,10 @@ v1.1.1 @ 2020-10-20
 
 CURRENT:
 [2020-10-22 01:01:01 CDT] - [git-mtime] Restores the file modification times of your git workdir to the repo's.
+
+
+WHAT THE FUCK IS WRONG WITH GITHUB GPG KEY SIGNATURES NOT VERIFYING DUE TO "No user is associated with the committer email."
+yet it's the primary FUCKING email address on my entire goddamn account, hasn't changed in over 10 years AND !!! 
+This just started failing sometime between Oct 18 and Oct 22 2020...
+
+The fuck?!@
