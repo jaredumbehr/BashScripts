@@ -27,3 +27,6 @@ v1.1.0 @ 2020-10-01
 v1.1.1 @ 2020-10-20
 [2020-10-01 08:38:03 CDT] - [changelog-maker-lite] Added a utility for making pretty CHANGELOGs.
 [2020-10-20 20:10:54 CDT] - Added arch-pacman-dupe-cleaner for resolving "error: duplicated database entry 'foo'"
+
+CURRENT:
+[2020-10-22 01:01:01 CDT] - [git-mtime] Restores the file modification times of your git workdir to the repo's.
