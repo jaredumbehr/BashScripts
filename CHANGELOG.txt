@@ -41,3 +41,5 @@ WHAT THE FUCK?!?!?! IT ACTUALLY VERIFIED @ fc3ea408?!?!
 
 Are rebases the only thing that got broken? Nope. Those work.
 
+What about git rebase redates? Yes! That's the problem!
+
