@@ -27,8 +27,21 @@ HOUR=$(date +"%H")
 
 mkdir -p /snaps/daily
 
+if [[ ! -d "/snaps/daily" ]]; then
+    mkdir /snaps/daily
+fi
+
 if [[ ! -d "/snaps/daily/${DATE}" ]]; then
     btrfs subvolume snapshot / /snaps/daily/${DATE}
 fi
 
-btrfs subvolume snapshot / /snaps/daily/${DATE}/${HOUR}
+if [[ ! -d "/snaps/code" ]]; then
+    mkdir /snaps/code
+fi
+
+if [[ ! -d "/snaps/code/${DATE}" ]]; then
+    btrfs subvolume snapshot /code /snaps/code/${DATE}
+fi
+
+
+btrfs subvolume snapshot /code /snaps/code/${DATE}/${HOUR}

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+function is_root()
+{
+    [ "$EUID" -eq 0 ];
+}
+
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if is_root; then
+        echo "Running as root"
+    else
+        echo "Not running as root"
+    fi
+fi

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function wait_until_mouse_or_keyboard_movement()
+{
+    # Ensure libinput-tools is installed
+    if ! command -v libinput >/dev/null 2>&1; then
+        echo "Error: libinput-tools is not installed. Please install it and try again."
+        exit 1
+    fi
+
+    if ! command -v sudo >/dev/null 2>&1; then
+        echo "Error: sudo is not installed. Please install it and try again."
+        exit 1
+    fi
+
+    # Turn off the monitors.
+
+    # Start monitoring input events
+    #echo "Monitoring input events. Press Ctrl+C to stop."
+    sudo stdbuf -oL libinput debug-events | while read -r line; do
+        case "$line" in
+            *"KEYBOARD_KEY"*)
+                echo "KEYBOARD_KEY"; return 0;
+                ;;
+            *"POINTER_BUTTON"*)
+                echo "MOUSE_CLICK"; return 0;
+                ;;
+            *"POINTER_MOTION"*)
+                echo "MOUSE_MOVED"; return 0;
+                ;;
+        esac
+    done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    wait_until_mouse_or_keyboard_movement
+fi

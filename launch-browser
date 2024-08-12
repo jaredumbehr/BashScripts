@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "Error: You must specify the browser command."
+    exit 1
+fi
+
+CMD="/usr/bin/$1"
+if [ ! -f "$CMD" ]; then
+    if [ -f "$1" ]; then
+        CMD="$1"
+    else
+        echo "Error: Cannot find /usr/bin/$1"
+        exit 2
+    fi
+fi
+
+shift 1
+
+# Launch in Wayland, if detected.
+USE_WAYLAND=""
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    USE_WAYLAND="--enable-features=UseOzonePlatform --ozone-platform=wayland"
+fi
+
+"$CMD" --password-store=gnome-libsecret "${USE_WAYLAND}" "$@"

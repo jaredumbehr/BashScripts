@@ -1,229 +1,398 @@
-＃HopeSeekr的Bash腳本集合
+The document begins with a description of a collection of Bash scripts, detailing utilities that the author uses to enhance their Linux experience. I will proceed with translating the entire content of this document into Simplified Chinese.
 
-方便您生活的實用工具。
+I'll first translate the text and then provide you with the translated content.
 
-我每天使用的腳本或安裝新系統的腳本，
-極大地改善了我的Linux使用體驗！
+It seems that I don't have access to the required libraries to perform the translation directly in this environment. However, I can translate the document for you manually. This will take some time, but I'll get started right away.
 
-！[希望的徽標]（https://avatars2.githubusercontent.com/u/50506504?s=200&v=4）
+Here is the translation of the document into Simplified Chinese:
 
-它們按提供給我的實用性（降序）排序。
+---
 
-目錄（分類）
-==============================
+# HopeSeekr 的 Bash 脚本集
 
-   * **超級生產力**
-      * [bash_rc.aliases]（＃bash_rcaliases）-高辛烷值.bashrc別名和功能可改善生活質量。
-      * [sudoers.d / 00_prompt_once]（＃sudoersd00_prompt_once）-每次引導僅提示輸入一次您的sudo密碼。
-      * [ssh-keyphrase-only-once]（＃ssh-keyphrase-only-onceinstaller）-每次引導僅提示輸入一次SSH密鑰。
-      * [gitconfig]（＃gitconfig）-高辛烷值Git CLI配置。
-   * ** CronTabs **
-      * [cron.daily / 00_clear-cache]（＃crondaily00_clear-cache）-每晚刪除無用的緩存文件。
-      * [cron.daily / 01_purge-locales]（＃crondaily01_purge-locales）-刪除無用的國際語言環境。
-      * [cron.hourly / btrfs-snapshot]（＃cronhourlybtrfs-snapshot）-每小時備份一次BTRFS。
-      * [cron.daily / btrfs-snapshot]（＃crondailybtrfs-snapshot）-每天備份您的BTRFS。
-   * **生活質量**
-      * [ls-by-min]（＃ls-by-min-）-按文件大小（降序）對`ls`的輸出進行排序。
-      * [隨機文件[dir]]（＃random-file-dir）-隨機選擇一個文件或目錄並顯示它。
-      * [sync-watch]（＃sync-watch）-輸出微小的更新顯示，其中需要將多少MB寫入磁盤。
-      * [關閉監視器]（＃turn-off-monitors）-通過命令行（CLI）關閉所有監視器。
-   * ** Uber Scripts **（很好的控制台腳本）
-      * [changelog-maker-lite]（＃changelog-maker-lite）-根據提交歷史記錄快速創建漂亮的變更日誌。
-      * [git-mtime]（＃git-mtime）-將每個文件的修改時間恢復到存儲庫的歷史記錄。
-      * [stream-to-youtube]（＃stream-to-youtube）-通過CLI直接向YouTube進行實時截屏。
-      * [watermark.sh]（＃watermarksh）-輕鬆將自己的圖像水印嵌入視頻中。
-      * [wifi-autorun-on-connect]（＃wifi-autorun-on-connectinstaller）-連接到Wifi熱點時自動運行腳本。
-      * [x265.sh]（＃x265sh）-使用VAAPI通過Intel顯卡轉碼為h265 HEVC。
-   * **神秘的實用工具**
-      * [arch-pacman-dupe-cleaner]（＃esotericarch-pacman-dupe-cleaner）-
-      * [init-btrfs-rootfs]（＃esotericinit-btrfs-rootfs）-刪除重複的Arch Linux Pacman條目。
-      * [clone-github-repos.php]（＃esotericclone-github-reposphp）-下載用戶/ org的所有GitHub存儲庫。
-   * [許可證]（＃license）-國際知識共享v4.0
-   * [關於作者]（＃about-the-author）
+用于简化生活的实用工具。
+
+这是我日常使用的脚本，或在新的系统安装中使用的脚本，大大改善了我使用 Linux 的体验！
+
+![Hope 的标志](https://avatars2.githubusercontent.com/u/50506504?s=200&v=4)
+
+它们根据对我提供的效用进行排序。
+
+最近更改
+==========
+
+#### v2.6.0 @ 2024-08-12
+
+* **[2024-08-12]** 大幅清理了 README 并翻译成中文、印地语和西班牙语。
+* **[2024-08-12]** [turn-off-monitors] 增加了在 Wayland 下关闭 Gnome 和 KDE 显示器的完整支持。
+* **[2024-08-12]** [arch-pacman-dupe-cleaner] 需要超级用户权限运行。
+* **[2024-08-12]** [gitconfig] 在无法访问网站时自动超时 git。
+* **[2024-08-12]** [bash_rc.aliases] 如果安装了 mosh，则替换 ssh。
+* **[2024-08-12]** [bash_rc.aliases] 添加了一个别名，使 `watch` 尊重 ~/.bashrc 别名。
+* **[2024-08-12]** [framework/wait_until_mouse_or_keyboard_event] 阻止执行直到按下键盘键、移动鼠标或点击鼠标按钮。
+* **[2024-08-12]** [framework/is_root] 增加了一个确定是否为 root 访问的函数。
+* **[2024-08-12]** [launch-browser] 在本地 Wayland 启动基于 Chrome 的浏览器。
+* **[2024-08-12]** 添加了 .bash_profile。
+
+#### v2.5.1 @ 2024-08-09
+* **[2024-03-17]** [btrfs-snapshot] 增加了对 /code 进行每小时快照的支持。
+* **[2024-08-09]** [tar-sorted] 增加了对 –zstd 文件的支持。
+
+#### v2.5.0 @ 2024-01-19
+* **[2020-10-14]** [american-date] 一个用于以美国格式 ('Fri, 19 January 2024 05:49:20 CST') 打印日期的工具。
+* **[2024-01-15]** [tar-sorted] 自动按文件名排序创建 tar 文件。
+* **[2023-11-17]** [git-commit-at-modded-time] 使用文件修改时间作为 git 提交时间。
+* **[2024-01-19]** [git-same-sig-time] 统一 GPG 签名时间与提交时间。
+
+目录（分类）
+====================
+
+* **超级生产力**
+    * [bash_profile](#bash_profile) - 针对高级用户的高质量 `.bash_profile` 和 `.bashrc`。
+    * [bash_rc.aliases](#bash_rcaliases) - 高效的 .bashrc 别名和函数，用于提升生活质量。
+    * [sudoers.d/00_prompt_once](#sudoersd00_prompt_once) - 每次启动时仅请求一次 sudo 密码。
+    * [ssh-autologin](#ssh-autologin) - 自动设置 SSH 自动登录。
+    * [ssh-keyphrase-only-once](#ssh-keyphrase-only-onceinstaller) - 每次启动时仅请求一次 SSH 密码短语。
+    * [gitconfig](#gitconfig) - 高效的 Git CLI 配置。
+* **Git 生活质量**
+    * [git-change-author](#git-change-author) - 轻松批量更改 git 仓库中的作者姓名和电子邮件。
+    * [git-commit-at-modded-time](#git-commit-at-modded-time) - 使用文件修改时间作为 git 提交时间。
+    * [git-mtime](#git-mtime-git-modified-time-restorer) - 将每个文件的修改时间恢复到 git 仓库历史记录中。
+    * [git-same-sig-time](#git-same-sig-time) - 统一 GPG 签名时间与提交时间。
+    * [git-shallow-pull](#esotericgit-shallow-pull) - 浅层更新 `git clone --depth 1` 的仓库。
+* **CronTabs**
+    * [cron.daily/00_clear-cache](#crondaily00_clear-cache) - 每晚清除无用的缓存文件。
+    * [cron.daily/01_purge-locales](#crondaily01_purge-locales) - 删除无用的国际化文件。
+    * [cron.hourly/btrfs-snapshot](#cronhourlybtrfs-snapshot) - 每小时备份你的 BTRFS / 。
+    * [cron.daily/btrfs-snapshot](#crondailybtrfs-snapshot) - 每天备份你的 BTRFS / 。
+    * [cron.hourly/php-clean-tmp](#cronhourlyphp-clean-tmp) - 在繁忙的服务器上清理 PHP 临时文件。
+* **生活质量**
+    * [launch-browser](#launch-browser) - 用于启动浏览器的实用脚本，可在完整的 Wayland 模式下启动它们。
+    * [ls-by-min](#ls-by-min) - 按文件大小降序排序 `ls` 输出。
+    * [random-file](#random-file) - 随机选择并显示一个文件或目录。
+    * [sync-watch](#sync-watch) - 显示需要写入磁盘的 MB 数量的更新屏幕。
+    * [tar-sorted](#tar-sorted) - 自动按文件名排序创建 tar 文件。
+    * [turn-off-monitors](#turn-off-monitors) - 通过命令行关闭所有显示器（CLI）。
+* **精彩脚本**
+    * [american-date](#american-date) - 一个用于打印美国日期格式的工具。
+    * [changelog-maker-lite](#changelog-maker-lite) - 根据提交历史快速创建美观的变更日志。
+    * [stream-to-youtube](#stream-to-youtube) - 直接从命令行直播到 YouTube。
+    * [watermark.sh](#watermarksh) - 轻松在视频中嵌入自定义水印。
+    * [wifi-autorun-on-connect](#wifi-autorun-on-connectinstaller) - 连接到 WiFi 热点时自动运行脚本。
+    * [x265.sh](#x265sh) - 使用 Intel 显卡通过 VAAPI 转码到 h265 HEVC。
+* **神秘工具**
+    * [arch-pacman-dupe-cleaner](#esotericarch-pacman-dupe-cleaner) - 清除 Arch Linux Pacman 中的重复条目。
+    * [init-btrfs-rootfs](#esotericinit-btrfs-rootfs) - 将所有内容放入组织良好的 BTRFS 子卷，并启用快照。
+    * [clone-github-repos.php](#esotericclone-github-reposphp) - 下载用户/组织的所有 GitHub 仓库。
+* **Bash 框架**
+    * [is_root](#is_root) - 提供 `is_root` 函数以确定当前用户是否具有 root 访问权限。
+    * [wait_until_mouse_or_keyboard_event](#wait_until_mouse_or_keyboard_event) - 阻止程序执行，直到按下键盘键、移动鼠标或单击鼠标按钮。
+
+* [许可证](#license) - 创作共用 v4.0 国际许可证
+* [关于作者](#about-the-author)
+
+## bash_profile
+
+将许多 Bash 脚本结合在一起，创建一个超级强大的系统。
 
 ## bash_rc.aliases
 
-可以說這是該項目中最重要的部分！
+这可能是项目中最有价值的一部分！
 
-這幾十個別名使得可以使用Linux並進行開發
-網絡應用程序軟件更加高效和簡化。
+这些数十个别名使在 Linux 上工作和开发 Web 应用程序更加高效和优化。
 
-去看看吧！ [bash_rc.aliases]（bash_rc.aliases）
+快去查看文件！ [bash_rc.aliases](bash_rc.aliases)
 
-## sudoers.d / 00_prompt_once
+## sudoers.d/00_prompt_once
 
-這將使sudo在此過程中僅要求您一次輸入密碼
-一次啟動。它不會跨終端詢問，也不會超時。
-重新啟動後，它將自動過期。
+这将使 `sudo` 在一次启动过程中仅要求输入一次密码。 它不会通过不同的终端请求，并且不会过期。 重启后会自动过期。
+
+## ssh-autologin
+
+自动设置（如果需要）SSH 私钥并将其安装在远程服务器上（如果需要，还将创建 .ssh 目录）。
 
 ## ssh-keyphrase-only-once.installer
 
-正確配置您的OpenSSH客戶端，並以這種方式在您的〜/ .bash_profile中安裝`ssh-agent`
-您只需為每次與ssh-agent一起使用的操作每次登錄都輸入一次SSH密鑰短語。
+正确配置你的 OpenSSH 客户端并在 `~/.bash_profile` 中安装 `ssh-agent`，这样你只需在每次登录时为任何使用 `ssh-agent` 的操作输入一次 SSH 密码短语。
 
 ## gitconfig
 
-為經驗豐富的軟件開發人員準備的高度優化的.gitconfig，準備提高其日常工作效率。
-安裝到〜/ .gitconfig中。
+一个高度优化的 .gitconfig 文件，适用于经验丰富的软件开发人员，以提高他们的日常生产力。
 
-    git漂亮
-    吉特
+安装在 ~/.gitconfig 中。
 
-顯示帶有標準ISO日期的精美彩色日誌：
+    git pretty
+    git ll
 
-！[git pretty]（https://user-images.githubusercontent.com/1125541/94773688-e904c300-0381-11eb-878a-d0396d2bf102.png）
+显示一个带有标准 ISO 日期的漂亮多彩日志：
 
-    git修復
+![git pretty](https://user-images.githubusercontent.com/1125541/94773688-e904c300-0381-11eb-878a-d0396d2bf102.png)
 
-迅速跳入基礎以將最後兩個提交彼此合併。
+    git fix
+
+快速跳转以将最近的两个提交合并为一个提交。
 
     git alterego
 
-快速將當前回購切換為使用您的主要alterego帳戶進行先前提交的提交。
+快速切换当前仓库以使用你的主 AlterEgo 账户提交先前的更改。
 
-    自我
+    git ego
 
-git alterego的相反。
+git alterego 的反义词。
 
-    git resign <哈希>
+    git resign <hash>
 
-將批量提交從<hash>快速辭職到最新的。
+快速批量重新签署从指定 hash 到最近的提交。
 
-當您的GPG密鑰過期且需要續簽然後辭職時，此功能特別實用。
+这在 GPG 密钥到期并需要更新然后重新签署时特别有用。
 
-    git c：結帳
-    git cp：選擇櫻桃
-    git cpm：合併提交的Cherry-pick
+    git c: checkout
+    git cp: cherry-pick
+    git cpm: cherry-pick for Merge commits
 
-實用程序別名使git的使用效率更高。
+实用的别名，使使用 git 更加高效。
 
-    git顯示
+    git shows
 
-在git log中顯示每次提交的GPG簽名。
-
-## cron.daily / 00_clear-cache
-
--清空每個非root用戶的〜/ .cache目錄。
--清空Pacman的程序包緩存目錄。
-
-可以選擇使用[nullfsvfs]（https://github.com/abbbi/nullfsvfs）來限制SSD的磨損。
-
-## cron.daily / 01_purge-locales
-
-每天刪除每個非EN語言環境文件。
-
-通常可以節省400-1000 MB的空間。
-
-## cron.hourly / btrfs-snapshot
-
-每小時每小時拍攝一次BTRFS快照。
-
-## cron.daily / btrfs-snapshot
-
-清理前一天的小時快照，同時保留每天的快照。
-
-##關閉顯示器
-
-通過CLI輕鬆關閉所有顯示器。
-
-當您只想離開而不必擔心鎖定屏幕時。
-
-## ls-by-min <MB>
-
-返回按文件大小排序的文件列表，降序至少為X MB。
-
-## x265.sh
-
-使用英特爾的顯卡通過ffmpeg將代碼轉碼為x265 HEVC。
-
-##隨機文件[dir]
-
-從目錄/ PWD中選擇一個隨機文件。
-
-## wifi-autorun-on-connect.installer
-
-安裝一個NetworkManager腳本，該腳本在連接到特定的＃後自動運行
-WiFi網絡。
+在 git 日志中显示每个提交的 GPG 签名。
 
 ## git-change-author
 
-輕鬆批量更改git存儲庫中任何提交的作者姓名和電子郵件。
+轻松批量更改 git 仓库中任意提交的作者姓名和电子邮件。
 
-## git-mtime
+使用方法: `git-change-author "你的名字" "email@地址" [SHA1]`
 
-將每個文件在工作目錄中的修改時間恢復到
-最近在遠程git存儲庫中更新。
+## git-commit-at-modded-time
 
-##同步觀看
+使用文件修改时间作为 git 提交时间。
 
-顯示仍需要將多少兆字節寫入[慢速]磁盤。
+示例:
 
-## watermark.sh
+    $ ls -l american-date
+     #-rwxrwxr-x+ 1 1MB Oct 14  2020  american-date
+    $ ./git-commit-at-modded-time american-date
+    $ git pretty american-date
+    7462b66 G 2020-10-14 15:53:34 -0500 Theodore R. Smith
 
-通過ffmpeg向視頻添加水印。
+## git-mtime Git 修改时间恢复器
+
+将工作目录中每
+
+个文件的修改时间恢复到它们在 git 仓库历史记录中的时间。
+
+当你签出一个仓库并执行此操作时，你的工作目录将从：
+
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct 22 01:58 changelog-maker-lite*
+    -rw-rw-r--+ 1 tsmith users 1MB Oct 22 01:58 CHANGELOG.txt
+    -rw-rw-r--+ 1 tsmith users 1MB Oct 22 01:58 gitconfig
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct 22 01:58 git-mtime
+
+变为：
+
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct  1 08:38 changelog-maker-lite*
+    -rw-rw-r--+ 1 tsmith users 1MB Oct  1 01:10 gitconfig
+    -rwxrwxr-x+ 1 tsmith users 1MB Sep 30 23:19 git-mtime
+
+## git-same-sig-time
+
+统一 GPG 签名时间与提交时间。
+
+之前：
+
+     gpg: Signature made Fri 19 Jan 2024 06:50:44 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     43578ec G 2024-01-16 01:52:41 -0600 Theodore R. Smith   [m] Updated the packages and exclusion lists. HEAD
+     gpg: Signature made Fri 19 Jan 2024 06:50:25 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     8ab4104 G 2024-01-15 08:27:07 -0600 Theodore R. Smith   Upgraded to PHP 8.3.
+
+之后：
+
+     gpg: Signature made Tue 16 Jan 2024 01:52:41 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     515e36b G 2024-01-16 01:52:41 -0600 Theodore R. Smith   [m] Updated the packages and exclusion lists. HEAD
+     gpg: Signature made Mon 15 Jan 2024 08:27:07 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     22c5040 G 2024-01-15 08:27:07 -0600 Theodore R. Smith   Upgraded to PHP 8.3.
+
+## tar-sorted
+ 
+自动按文件名排序创建 tar 文件。
+
+这在随机排序的文件系统（如 ext4）中特别有用。
+
+在 Bettergist Collector 中，我们使用此方法来大致估算压缩和提取多个 GB 包含数百万文件的档案所需的时间。
+
+这是 `tar` 的直接替代，并使用相同的参数。
+
+可选地，你可以将函数直接安装在你的 ~/.bashrc 中。
+
+## cron.daily/00_clear-cache
+
+- 清空非 root 用户的 ~/.cache 目录。
+- 清空 Pacman 的包缓存目录。
+
+此操作可以选择性地使用 [nullfsvfs](https://github.com/abbbi/nullfsvfs) 来限制 SSD 的磨损。
+
+## cron.daily/01_purge-locales
+
+每天删除所有非 EN 的国际化文件。
+
+通常可以节省 400 至 1000 MB 的空间。
+
+## cron.hourly/btrfs-snapshot
+
+每小时整点拍摄 BTRFS 的 / 快照。
+
+## cron.daily/btrfs-snapshot  
+
+清理前一天的每小时快照，同时保留每日快照。
+
+## cron.hourly/php-clean-tmp
+
+清理无用的 PHP 临时文件，这在繁忙的服务器上非常有用。
+* 最近一小时内未修改的旧会话文件。
+* phpunit 的临时文件。
+* phpstan 的临时文件。
+
+## american-date
+
+用于打印美国格式日期的工具
+
+    周五, 2024 年 1 月 19 日 05:49:20 CST
 
 ## changelog-maker-lite
 
-根據簡明的git commit日誌輕鬆創建[CHANGELOGs]（CHANGELOG.md）：
+轻松根据简洁的 git 提交记录创建 [CHANGELOG](CHANGELOG.md)：
 
-    [2020-10-01 00:23:15 CDT]-[x265.sh]使用VAAPI通過Intel顯卡進行編碼。
-    [2020-10-01 00:30:00 CDT]-創建了README.md。
-    [2020-10-01 00:37:07 CDT]-重命名了[random-file]以更加清楚。
-    [2020-10-01 00:44:34 CDT]-推出了自述文件。
-    [2020-10-01 00:49:44 CDT]-[bash_rc.aliases]添加了一整套webdev別名。
-    [2020-10-01 00:58:00 CDT]-[bash_rc.aliases]添加了更多描述。
-    [2020-10-01 01:10:26 CDT]-[.gitconfig]添加了一大堆我的git別名。標籤：v1.0.0
-    [2020-10-01 08:17:42 CDT]-[清除緩存]刪除〜/ .cache目錄中損壞的符號鏈接。
+    [2020-10-01 00:23:15 CDT] - [x265.sh] 使用 Intel 显卡的 VAAPI 进行编码。
+    [2020-10-01 00:30:00 CDT] - 创建了 README.md。
+    [2020-10-01 00:37:07 CDT] - [random-file] 为了更清晰的重命名。
+    [2020-10-01 00:44:34 CDT] - 充实了 README。
+    [2020-10-01 00:49:44 CDT] - [bash_rc.aliases] 添加了一系列 Web 开发别名。
+    [2020-10-01 00:58:00 CDT] - [bash_rc.aliases] 添加了更多描述。
+    [2020-10-01 01:10:26 CDT] - [.gitconfig] 添加了大量 git 别名。 标签: v1.0.0
+    [2020-10-01 08:17:42 CDT] - [clear-cache] 删除 ~/.cache 目录中的损坏符号链接。
 
-##流到YouTube
+## launch-browser <browser-path>
 
-直接來自CLI的YouTube CLI Livestream Screencaster（通過ffmpeg）！
+1. 检测用户是否在运行 Wayland。 如果是这样，对于基于 Chromium 的浏览器，它将传递必要的标志，以便在 Wayland 原生模式（非 XWayland）下运行，以获得更高的性能。
+2. 它将始终使用 Gnome 密钥环启动，这样每次切换到 KDE 时，你不会丢失所有 cookie 和持久登录信息，反之亦然。
 
-＃神秘的實用程序
+## ls-by-min <MB>
 
-##深奧/ arch-pacman-dupe-cleaner
+返回按文件大小降序排列的文件列表，文件大小至少为 X MB。
 
-幫助在Arch Linux中自動修復重複的Pacman數據庫條目。
+## random-file
 
-這是為了解決罕見的問題：“錯誤：重複的數據庫條目'foo'”
+在当前目录或工作目录中随机选择一个文件。
+
+## stream-to-youtube
+
+直接从命令行通过 YouTube 直播屏幕（通过 ffmpeg）！
+
+## sync-watch
+
+显示仍需写入磁盘的 MB 数量。
+
+    每 5.0s: grep -e Dirty: -e Writeback: /proc/meminfo                                                    
+    asus-z13: 周五 2024 年 1 月 19 日 07:09:32
+    
+    Dirty:            751552 kB
+    Writeback:             0 kB
+
+## turn-off-monitors
+
+通过命令行轻松关闭所有显示器。
+
+当你想要离开并不那么担心锁屏时使用。
+
+## wifi-autorun-on-connect.installer
+
+安装一个 NetworkManager 脚本，在连接到特定 WiFi 网络时自动运行。
+
+## watermark.sh
+
+通过 ffmpeg 为视频添加水印。
+
+## x265.sh
+
+通过使用 Intel 显卡的 ffmpeg 转码到 x265 HEVC。
+
+# 神秘工具
+
+## esoteric/arch-pacman-dupe-cleaner
+
+帮助自动修复 Arch Linux Pacman 数据库中的重复条目。
+
+旨在解决罕见问题：“错误：重复的数据库条目‘foo’”
 
 ## esoteric/git-shallow-pull
 
-淺更新淺的`git clone --depth 1`存儲庫。
+浅层更新 `git clone --depth 1` 的仓库。
 
-## esoteric / init-btrfs-rootfs
+## esoteric/init-btrfs-rootfs
 
-＃＃＃ 問題
+在 Arch Linux 上，btrfs 配置将所有文件放在 / 上。 这极大地限制了适当管理系统的能力，subvol=5 除了子卷以外什么也没有。
 
-Arch Linux將所有/粘貼在主BTRFS子卷（ID = 5）中。
+这个脚本做以下事情：
 
-這意味著常見的快照和子卷任務，
-特別是回滾到以前（例如工作）
-根子卷異常困難，需要
-救援靴等
+* 创建新的根级别快照：`@rootfs` (/), `@snapshots`, `@important` 和 `@home`。
+* 将 `/` 的文件移动到 `/@rootfs`，将 `/home` 的文件移动到 `/home`，并创建新的目录 `/snaps` 和 `/important`。
+* 创建 `/media/true-root`，它会自动挂载到 `/ (subvol=5)`。
+* 与此项目中的自动快照 `cron.d` 作业集成
+   * 每天在 `/snaps/daily/YYYY-MM-DD` 中对 `/` 进行快照。
+   * **每小时**在 `/snaps/important/YYYY-MM-DD/HH` 中对 `/important` 进行快照。
+   * `/important` 配置为启用压缩。
+   * 将 `/home` 配置为基于每个用户的磁盘总空间的 10% 应用配额，并为每个用户的磁盘总空间应用 50% 的配额。
+   * `/home` 快照配置为启用
+   * `/home` 为用户的 `.*` 文件启用了 7 天的循环快照，除非是 `缓存` 目录（使用 [cron.daily/00_clear-cache] 时）。
+   
+### 问题
 
-＃＃＃ 解決方案
+Arch Linux 将 / 的所有内容放在 BTRFS 的主子卷中 (ID=5)。
 
-提供的解決方案可修復此情況，希望沒有
-在實時環境中需要應急磁盤。然而，
-您真的應該事先準備好救援盤。
+这意味着常见的快照和子卷创建任务，特别是回滚到以前的根子卷（例如功能性），非常困难，并且需要启动救援等。
 
-為了上帝的愛，請先備份！
+### 解决方案
 
-！[btrfs-init-rootfs]（https://user-images.githubusercontent.com/1125541/94771567-231f9600-037d-11eb-8032-50d2b5873f36.png）
+提供的解决方案暂时解决了这一情况，幸运的是，在无需救援光盘的情况下，在实时环境中完成。 然而，你确实应该事先准备好救援光盘。
 
-## esoteric / clone-github-repos.php
+为了神的爱，首先备份！
+![btrfs-init-rootfs](https://user-images.githubusercontent.com/1125541/94771567-231f9600-037d-11eb-8032-50d2b5873f36.png)
 
-自動下載用戶或組織的所有GitHub存儲庫。
+## esoteric/clone-github-repos.php
 
-＃ 執照
+自动下载用户或组织的所有 GitHub 仓库。
 
-該項目已獲得[知識共享署名許可國際v4.0]（LICENSE.cc-by.md）的許可。
+## Bash 框架
 
-！[CC.by許可摘要]（https://user-images.githubusercontent.com/1125541/93617603-cd6de580-f99b-11ea-9da4-f79c168c97df.png）
+### is_root
 
-＃ 關於作者
+独立运行时，它将回显“以 root 身份运行”或“未以 root 身份运行”。
 
-[西奧多·史密斯]（https://www.phpexperts.pro/]）<theodore@phpexperts.pro>
-GPG指紋：4BF8 2613 1C34 87AC D28F 2AD8 EB24 A91D D612 5690
-首席執行官：PHP Experts，Inc.
+作为函数调用时，它将返回 `true` 或 `false`。
+
+## wait_until_mouse_or_keyboard_event
+
+阻止正在执行的程序，直到按下键盘键、移动鼠标或按下鼠标按钮，无论窗口焦点如何。
+
+它将回显以下内容之一：KEYBOARD_KEY、MOUSE_CLICKED 或 MOUSE_MOVED。
+
+可以独立运行或作为函数运行。
+
+# 许可证
+
+本项目采用 [Creative Commons Attribution License v4.0 International](LICENSE.cc-by.md) 进行许可。
+
+![CC.by 许可证摘要](https://user-images.githubusercontent.com/1125541/93617603-cd6de580-f99b-11ea-9da4-f79c168c97df.png)
+
+# 关于作者
+
+[Theodore R. Smith](https://www.phpexperts.pro/]) <theodore@phpexperts.pro>  
+GPG 指纹：4BF8 2613 1C34 87AC D28F 2AD8 EB24 A91D D612 5690  
+CEO: PHP Experts, Inc.

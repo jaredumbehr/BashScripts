@@ -7,46 +7,94 @@ that improve my experience with Linux substantially!
 
 ![Hope's Logo](https://avatars2.githubusercontent.com/u/50506504?s=200&v=4)
 
-They are sorted by how much utility they provide me, descending.
+They are sorted by how much utility they provide me.
 
 Translations: [中文](README.cn.md), [हिन्दी](README.hi.md)
+
+Recent Changes
+==============
+
+#### v2.6.0 @ 2024-08-12
+
+* **[2024-08-12]** Majorly cleaned up the README and translated to Chinese, Hindi, and Spanissh.
+* **[2024-08-12]** [turn-off-monitors] Added full support for turning off monitors in Wayland for Gnome and KDE.
+* **[2024-08-12]** [arch-pacman-dupe-cleaner] Require superuser to run.
+* **[2024-08-12]** [gitconfig] Automatically time out git when websites are not reachable.
+* **[2024-08-12]** [bash_rc.aliases] Replace ssh with mosh, if it is installed.
+* **[2024-08-12]** [bash_rc.aliases] Added an alias to make `watch` honor ~/.bashrc aliases.
+* **[2024-08-12]** [framework/wait_until_mouse_or_keyboard_event] Block execution until a key is pressed, 
+                   the mouse is moved, or a mouse button is clicked.
+* **[2024-08-12]** [framework/is_root] Added a function for determining root access.
+* **[2024-08-12]** [launch-browser] Launch Chrome-based browsers in native Wayland.
+* **[2024-08-12]** Added a .bash_profile.
+
+#### v2.5.1 @ 2024-08-09
+* **[2024-03-17]** [btrfs-snapshot] Added support for hourly snapshots of /code.
+* **[2024-08-09]** [tar-sorted] Added support for --zstd archives. 
+
+#### v2.5.0 @ 2024-01-19
+* **[2020-10-14]** [american-date] A utility to print out dates in the American format 
+                   ('Fri, 19 January 2024 05:49:20 CST').
+* **[2024-01-15]** [tar-sorted] Create tar files automatically sorted by file name.
+* **[2023-11-17]** [git-commit-at-modded-time] Use a file's modified time as the git time.
+* **[2024-01-19]** [git-same-sig-time] Unifies the GPG signature time with the commit's time.
+
+
 
 Table of Contents (Categorized)
 ===============================
 
-   * **Super Productivity**
-      * [bash_rc.aliases](#bash_rcaliases) - High-Octane .bashrc aliase and functions for a better Quality of Life.
-      * [sudoers.d/00_prompt_once](#sudoersd00_prompt_once) - Only prompt for your sudo password once per boot.
-      * [ssh-autologin](#ssh-autologin) - Automatically set up SSH autologins.
-      * [ssh-keyphrase-only-once](#ssh-keyphrase-only-onceinstaller) - Only prompt for your SSH keyphrase once per boot.
-      * [gitconfig](#gitconfig) - High-Octane Git CLI Configuration.
-   * **CronTabs**
-      * [cron.daily/00_clear-cache](#crondaily00_clear-cache) - Remove useless cache files nightly.
-      * [cron.daily/01_purge-locales](#crondaily01_purge-locales) - Remove worthless intl locales.
-      * [cron.hourly/btrfs-snapshot](#cronhourlybtrfs-snapshot) - Backup your BTRFS / hourly.
-      * [cron.daily/btrfs-snapshot](#crondailybtrfs-snapshot) - Backup your BTRFS  / daily.
-   * **Quality of Life**
-      * [ls-by-min ](#ls-by-min-) - Sorts the output of  `ls` by file size, descending.
-      * [random-file [dir]](#random-file-dir) -  Randomly picks a file or directory and displays it.
-      * [sync-watch](#sync-watch) - Outputs a tiny, updating display of how many MBs need to be written to disks.
-      * [turn-off-monitors](#turn-off-monitors) - Turns off all monitors via the Command Line (CLI). 
-   * **Uber Scripts** (很好的控制台脚本)
-      * [changelog-maker-lite](#changelog-maker-lite) - Quickly creates a beautiful changelog from the commit history.
-      * [git-mtime](#git-mtime) - Restores every file's modification time to that of the repo's history.
-      * [stream-to-youtube](#stream-to-youtube) - Live Screencast directly to YouTube from the CLI. 
-      * [watermark.sh](#watermarksh) - Easily embed your own image watermark onto videos.
-      * [wifi-autorun-on-connect](#wifi-autorun-on-connectinstaller) - Autorun a script when you connect to a Wifi hotspot.
-      * [x265.sh](#x265sh) - Transcode to h265 HEVC via the Intel graphics card using VAAPI.
-   * **Esoteric Utilities**
-      * [arch-pacman-dupe-cleaner](#esotericarch-pacman-dupe-cleaner) - 
-      * [init-btrfs-rootfs](#esotericinit-btrfs-rootfs) - Remove duplicated Arch Linux Pacman entries.
-      * [clone-github-repos.php](#esotericclone-github-reposphp) - Downloads all of a user's/org's GitHub repositories.
-   * [License](#license) - Creative Commons v4.0 International
-   * [About The Author](#about-the-author)
+* **Super Productivity**
+    * [bash_profile](#bash_profile) - High-quality `.bash_profile` and `.bashrc` for power users.
+    * [bash_rc.aliases](#bash_rcaliases) - High-Octane .bashrc aliase and functions for a better Quality of Life.
+    * [sudoers.d/00_prompt_once](#sudoersd00_prompt_once) - Only prompt for your sudo password once per boot.
+    * [ssh-autologin](#ssh-autologin) - Automatically set up SSH autologins.
+    * [ssh-keyphrase-only-once](#ssh-keyphrase-only-onceinstaller) - Only prompt for your SSH keyphrase once per boot.
+    * [gitconfig](#gitconfig) - High-Octane Git CLI Configuration.
+* **Git Quality of Life**
+    * [git-change-author](#git-change-author) - Easily bulk change the author's name and email in a git repo.
+    * [git-commit-at-modded-time](#git-commit-at-modded-time) - Use a file's modified time as the git time.
+    * [git-mtime](#git-mtime-git-modified-time-restorer) - Restores every file's modification time to that of the repo's history.
+    * [git-same-sig-time](#git-same-sig-time) - Unifies the GPG signature time with the commit's time.
+    * [git-shallow-pull](#esotericgit-shallow-pull) - Shallow updates a shallow `git clone --depth 1` repository.
+* **CronTabs**
+    * [cron.daily/00_clear-cache](#crondaily00_clear-cache) - Remove useless cache files nightly.
+    * [cron.daily/01_purge-locales](#crondaily01_purge-locales) - Remove worthless intl locales.
+    * [cron.hourly/btrfs-snapshot](#cronhourlybtrfs-snapshot) - Backup your BTRFS / hourly.
+    * [cron.daily/btrfs-snapshot](#crondailybtrfs-snapshot) - Backup your BTRFS  / daily.
+    * [cron.hourly/php-clean-tmp](#cronhourlyphp-clean-tmp) - Cleans PHP temp files on busy servers.
+* **Quality of Life**
+    * [launch-browser](#launch-browser) - Browser launcher utility script that launches browsers in full-Wayland.
+    * [ls-by-min](#ls-by-min) - Sorts the output of  `ls` by file size, descending.
+    * [random-file](#random-file) - Randomly picks a file or directory and displays it.
+    * [sync-watch](#sync-watch) - Outputs a tiny, updating display of how many MBs need to be written to disks.
+    * [tar-sorted](#tar-sorted) - Create tar files automatically sorted by file name.
+    * [turn-off-monitors](#turn-off-monitors) - Turns off all monitors via the Command Line (CLI). 
+* **Uber Scripts** (很好的控制台脚本)
+    * [american-date](#american-date) - A utility to print out dates in the American format.
+    * [changelog-maker-lite](#changelog-maker-lite) - Quickly creates a beautiful changelog from the commit history.
+    * [stream-to-youtube](#stream-to-youtube) - Live Screencast directly to YouTube from the CLI. 
+    * [watermark.sh](#watermarksh) - Easily embed your own image watermark onto videos.
+    * [wifi-autorun-on-connect](#wifi-autorun-on-connectinstaller) - Autorun a script when you connect to a Wifi hotspot.
+    * [x265.sh](#x265sh) - Transcode to h265 HEVC via the Intel graphics card using VAAPI.
+* **Esoteric Utilities**
+    * [arch-pacman-dupe-cleaner](#esotericarch-pacman-dupe-cleaner) - Remove duplicated Arch Linux Pacman entries.
+    * [init-btrfs-rootfs](#esotericinit-btrfs-rootfs) - Puts everything into organized BTRFS subvolumes + turns on snapshotting.
+    * [clone-github-repos.php](#esotericclone-github-reposphp) - Downloads all of a user's/org's GitHub repositories.
+* **Bash Framework**
+    * [is_root](#is_root) - Provides the `is_root` function for determining if the current user has root access.
+    * [wait_until_mouse_or_keyboard_event](#wait_until_mouse_or_keyboard_event) - Block execution until a key is pressed, the mouse is moved, or a mouse button is clicked.
+
+* [License](#license) - Creative Commons v4.0 International
+* [About The Author](#about-the-author)
+
+## bash_profile
+
+Ties many of the BashScripts together for a super powerful system.
 
 ## bash_rc.aliases
 
-This is arguably the most important piece of the project!
+This is arguably the most valuable piece of the project!
 
 These dozens of aliases make working with Linux and developing
 web app software much more efficient and streamlined.
@@ -109,6 +157,82 @@ Utility aliases to make git more efficient to use.
 
 Shows the GPG signature for every commit in `git log`.
 
+## git-change-author
+
+Easily bulk change the author's name and email of any of the commits in a git repository.
+
+Usage: `git-change-author "Your Name" "email@address" [SHA1]`
+
+## git-commit-at-modded-time
+
+Use a file's modified time as the git time.
+
+Example:
+
+    $ ls -l american-date
+     #-rwxrwxr-x+ 1 1MB Oct 14  2020  american-date
+    $ ./git-commit-at-modded-time american-date
+    $ git pretty american-date
+    7462b66 G 2020-10-14 15:53:34 -0500 Theodore R. Smith
+
+## git-mtime Git Modified Time Restorer
+
+Restores each file's modification time in your working directory to when it was
+last updated in the remote git repository.
+
+When you checkout a repository & run this, your workdir goes from:
+
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct 22 01:58 changelog-maker-lite*
+    -rw-rw-r--+ 1 tsmith users 1MB Oct 22 01:58 CHANGELOG.txt
+    -rw-rw-r--+ 1 tsmith users 1MB Oct 22 01:58 gitconfig
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct 22 01:58 git-mtime
+
+To:
+
+    -rwxrwxr-x+ 1 tsmith users 1MB Oct  1 08:38 changelog-maker-lite*
+    -rw-rw-r--+ 1 tsmith users 1MB Oct  1 01:10 gitconfig
+    -rwxrwxr-x+ 1 tsmith users 1MB Sep 30 23:19 git-mtime
+
+## git-same-sig-time
+
+Unifies the GPG signature time with the commit's time.
+
+Before:
+
+     gpg: Signature made Fri 19 Jan 2024 06:50:44 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     43578ec G 2024-01-16 01:52:41 -0600 Theodore R. Smith   [m] Updated the packages and exclusion lists. HEAD
+     gpg: Signature made Fri 19 Jan 2024 06:50:25 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     8ab4104 G 2024-01-15 08:27:07 -0600 Theodore R. Smith   Upgraded to PHP 8.3.
+
+After:
+
+     gpg: Signature made Tue 16 Jan 2024 01:52:41 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     515e36b G 2024-01-16 01:52:41 -0600 Theodore R. Smith   [m] Updated the packages and exclusion lists. HEAD
+     gpg: Signature made Mon 15 Jan 2024 08:27:07 AM CST
+     gpg:                using RSA key 4BF826131C3487ACD28F2AD8EB24A91DD6125690
+     gpg: Good signature from "Theodore R. Smith <theodore@phpexperts.pro>" [ultimate]
+     22c5040 G 2024-01-15 08:27:07 -0600 Theodore R. Smith   Upgraded to PHP 8.3.
+
+## tar-sorted
+ 
+Create tar files automatically sorted by file name.
+
+This is particularly helpful on random-order file systems, such as ext4.
+
+With the Bettergist Collector, we use this to be able to roughly estimate
+how long compressing and extracting multiple-gigabyte files with millions
+of files will take.
+
+It is a drop-in replacement for `tar`, and uses the same arguments.
+
+Optionally, you can install the function directly into your ~/.bashrc.
+
 ## cron.daily/00_clear-cache
 
 - Empties out the ~/.cache directory of every non-root user.
@@ -130,45 +254,18 @@ Takes BTRFS snapshots of / every hour on the hour.
 
 Cleans up the prior day's hourly snapshots while keeping the daily ones.
 
-## turn-off-monitors
+## cron.hourly/php-clean-tmp
 
-Easily turns off all of your monitors via the CLI.
+Cleans up otherwise-useless PHP temp files, which is very useful on busy servers.
+* Old session files that haven't been modified in the last hour.
+* phpunit temp files.
+* phpstan temp files.
 
-For when you want to just step away and not worry so much about a lock screen.
+## american-date
 
-## ls-by-min <MB>
+A utility to print out dates in the American format
 
-Returns a list of files sorted by file size, descending, that are at least X MB big.
-
-## x265.sh
-
-Transcodes to x265 HEVC via ffmpeg using Intel's graphics card.
-
-## random-file [dir]
-
-Picks a random file in a directory / PWD.
-
-## wifi-autorun-on-connect.installer
-
-Installs a NetworkManager script that atomatically runs when connected to specific               #
-WiFi networks.
-
-## git-change-author
-
-Easily bulk change the author's name and email of any of the commits in a git repository.
-
-## git-mtime
-
-Restores each file's modification time in your working directory to when it was 
-last updated in the remote git repository.
-
-## sync-watch
-
-Displays how many megabytes still need to be written to [slow] disks.
-
-## watermark.sh
-
-Adds a watermark to videos via ffmpeg.
+    Fri, 19 January 2024 05:49:20 CST
 
 ## changelog-maker-lite
 
@@ -183,9 +280,52 @@ Easily creates [CHANGELOGs](CHANGELOG.md) based upon concise git commit logs:
     [2020-10-01 01:10:26 CDT] - [.gitconfig] Added a whole bunch of my git aliases. tag: v1.0.0
     [2020-10-01 08:17:42 CDT] - [clear-cache] Delete broken symlinks in the ~/.cache directories.
 
+## launch-browser <browser-path>
+
+1. It detects if the user is running Wayland. If so, for Chromium-based browsers, it will pass 
+   the flags necessary for it to run in native-Wayland (not XWayland) for superior performance.
+2. It will always launch using the Gnome Keychain, so that you won't lose all of your cookies and
+   permanent logins every time you switch to KDE, and vice-versa.
+
+## ls-by-min <MB>
+
+Returns a list of files sorted by file size, descending, that are at least X MB big.
+
+## random-file
+
+Picks a random file in a directory / PWD.
+
 ## stream-to-youtube
 
 YouTube CLI Livestream Screencaster straight from the CLI (via ffmpeg)!
+
+## sync-watch
+
+Displays how many megabytes still need to be written to [slow] disks.
+
+    Every 5.0s: grep -e Dirty: -e Writeback: /proc/meminfo                                                    asus-z13: Fri Jan 19 07:09:32 2024
+    
+    Dirty:            751552 kB
+    Writeback:             0 kB
+
+## turn-off-monitors
+
+Easily turns off all of your monitors via the CLI.
+
+For when you want to just step away and not worry so much about a lock screen.
+
+## wifi-autorun-on-connect.installer
+
+Installs a NetworkManager script that atomatically runs when connected to specific               #
+WiFi networks.
+
+## watermark.sh
+
+Adds a watermark to videos via ffmpeg.
+
+## x265.sh
+
+Transcodes to x265 HEVC via ffmpeg using Intel's graphics card.
 
 # Esoteric Utilities
 
@@ -200,6 +340,25 @@ It's meant to resolve the rare problem: "error: duplicated database entry 'foo'"
 Shallow updates a shallow `git clone --depth 1` repository.
 
 ## esoteric/init-btrfs-rootfs
+
+In Arch Linux, a btrfs setup puts every single file in /. This greatly limits
+the ability to properly manage the system, with subvol=5 having nothing but
+subvolumes.
+
+This script does the following:
+
+* Creates new root-level snapshots: `@rootfs` (/), `@snapshots`, `@important`, and `@home`.
+* Moves files `/` into `/@rootfs`, `/home` into `/home` and creates new `/snaps` and `/important`.
+* Creates `/media/true-root` that is auto-mounted to `/ (subvol=5)`.
+* Integrates with the `cron.d` auto-snapshot cronjobs in this project
+   * `/` is snapshotted daily in `/snaps/daily/YYYY-MM-DD.
+   * `/important` is snapshotted **hourly** in `/snaps/important/YYYY-MM-DD/HH`.
+   * `/important` is set for compression-enabled.
+   * Sets up `/home` to quota-enforced based on 10% of the total disk space per-user,
+     and 50% of the total disk space for every user.
+   * The `/home` snapshot is set for compression-enabled.
+   * The `/home` has rolling 7-day snapshotting for user's `.*` files, 
+     except for `cache` directories (when using [cron.daily/00_clear-cache]).
 
 ### The Problem
 
@@ -223,6 +382,23 @@ And for the love of God, make backups first!
 ## esoteric/clone-github-repos.php
 
 Automagically downloads all of the GitHub repositories of a user or or an organization.
+
+## Bash Framework
+
+### is_root
+
+When run standalone, it will echo either "Running as root" or "Not running as root".
+
+When called as a function, it will return either `true` or `false`.
+
+## wait_until_mouse_or_keyboard_event
+
+Blocks the executing program until a key is pressed, the mouse is moved, or a mouse button
+is pressed, anywhere, irregardless of window focus.
+
+It will echo one of the following: KEYBOARD_KEY, MOUSE_CLICKED, or MOUSE_MOVED.
+
+Can be run either standalone or as a function.
 
 # License
 
